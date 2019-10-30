@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="web2alpha:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/web2alpha_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="web2alpha" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="web2alpha/web/Web" />
+    </root>
+  </artifact>
+</component>
