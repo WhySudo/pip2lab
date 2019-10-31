@@ -18,7 +18,7 @@ public class ResultsHolder {
     }
 
     public void add(Result result){
-        results.add(result);
+        results.add(0, result);
     }
 
     @Override
@@ -27,7 +27,7 @@ public class ResultsHolder {
         StringBuilder res= new StringBuilder();
         Result[] resArray = new Result[results.size()];
         results.toArray(resArray);
-        for(int i=resArray.length-1; i>-1;i--){
+        for(int i=0; i<resArray.length;i++){
             res.append(resArray[i].toString());
         }
         return res.toString();

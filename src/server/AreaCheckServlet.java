@@ -50,7 +50,7 @@ public class AreaCheckServlet extends HttpServlet {
         //System.out.println(holder);
         response.setContentType("application/json; charset=UTF-8");
         Writer out = response.getWriter();
-        String razvrat = "{\"htmltxt\":\""+holder.getResults().get(holder.getResults().size()-1).toString()+"\",\n\"Inside\":\"" + ((holder.getResults().get(holder.getResults().size()-1).isCorrect())?(holder.getResults().get(holder.getResults().size()-1).isInside()?"1":"0"):("2")) + "\"}";
+        String razvrat = "{\"htmltxt\":\""+holder.getResults().get(0).toString()+"\",\n\"Inside\":\"" + ((holder.getResults().get(0).isCorrect())?(holder.getResults().get(0).isInside()?"1":"0"):("2")) + "\"}";
         out.write(razvrat);
 //        response.sendRedirect("index.jsp");
         //TODO replace this if need

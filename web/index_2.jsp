@@ -20,40 +20,24 @@
 %>
 <table id="tmain">
     <tr class="logohead">
-        <td class="logo" colspan="2">
+        <td class="logo" colspan="3">
             <div>
                 Очаковский Юрий Владимирович P3213
-
+                <br>
                 Вариант N213014
-            </div>
-            <div id="logimg"></div>
+            </div><br>
+            <img src="logo.png"><br>
             <div>
                 Powered by YURAN.US
             </div>
         </td>
     </tr>
-    <tr class="values">
-        <td id="zone">
-            <canvas height="360px" width="360px" id="zoneCanvas"></canvas>
-        </td>
-        <td class="data_response" id="dresp" rowspan="6">
-            <center>
-                <a href="index.jsp?clear=1">Очистка</a><br>
-                <div>
-                    <div class="headsc"><span>X</span><span>Y</span><span>R</span><span>Result</span></div>
-                    <div class="cont"> <table class="kek"><tbody  id="rtab">
-                    <%=
-                    results.toString()
-                    %>
-                    </tbody></table></div>
-
-                </div>
-            </center>
-        </td>
-    </tr>
     <tr class="valuess">
+        <td class="data_name">
+            Pos X
+        </td>
         <td class="data_value" id="box_X">
-            <span>Pos X:</span><div id="xdata" class="xbuts">
+            <div id="xdata" class="xbuts">
                 <select form="mform" name="posX" id="posX">
                     <option value="-4">-4</option>
                     <option value="-3">-3</option>
@@ -68,31 +52,45 @@
                 </select>
             </div>
         </td>
-    </tr>
-    <tr class="valuess">
-        <td class="data_value" id="box_Y">
-            <form method="GET" id="mform" onsubmit="return isValidIns();">
-                <span>Pos Y:</span><input type="text" name="posY" id="posY" class="yin" maxlength="12" onkeyup="reqValid();" value="9">
-            </form>
-        </td>
-    </tr>
-    <tr class="valuess">
-        <td class="data_value" id="box_R">
-            <span>Radius:</span><div id="rdata" class="rbuts">
-                <input type="text" form="mform" name="ras" id="ras" class="yin" maxlength="12" onkeyup="reqValid(); redrawGraph();" value="4">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td id="sbutton">
+        <td rowspan="3" id="sbutton">
             <button type="button" form="mform" id="sbutk" disabled onclick="formrequest();" name="submit_btn" >
                 Поехали
             </button>
         </td>
     </tr>
+    <tr class="valuess">
+        <td class="data_name">Pos Y</td>
+        <td class="data_value" id="box_Y">
+            <form method="GET" id="mform" onsubmit="return isValidIns();">
+                <input type="text" name="posY" id="posY" class="yin" maxlength="12" onkeyup="reqValid();" value="9">
+            </form>
+        </td>
+    </tr>
+    <tr class="valuess">
+        <td class="data_name">
+            Radius
+        </td>
+        <td class="data_value" id="box_R">
+            <div id="rdata" class="rbuts">
+                <input type="text" form="mform" name="ras" id="ras" class="yin" maxlength="12" onkeyup="reqValid(); redrawGraph();" value="4">
+            </div>
+        </td>
+    </tr>
     <tr class="butkon">
-
-
+        <td id="zone" colspan="2">
+            <canvas height="360px" width="360px" id="zoneCanvas"></canvas>
+        </td>
+        <td class="data_response" id="dresp">
+            <center>
+            <a href="index.jsp?clear=1">Очистка</a><br>
+                <div class="cont">
+            <table><tbody  id="rtab"><tr><td>X</td><td>Y</td><td>R</td><td>Result</td></tr>
+            <%=
+               results.toString()
+            %>
+            </tbody></table></div>
+            </center>
+        </td>
     </tr>
 </table>
 <script>
@@ -272,7 +270,7 @@
                 console.log(data);
                 let jdata = JSON.parse(data);
 
-                document.getElementById('rtab').innerHTML = jdata['htmltxt'] + document.getElementById('rtab').innerHTML;
+                document.getElementById('rtab').innerHTML = document.getElementById('rtab').innerHTML + jdata['htmltxt'];
                 //drawPoint(value*100/R+180, -1*yvalue*100/R+180,3,0,2*3.14,"#00FF00")
                 plot_context.beginPath();
                 if(jdata['Inside'] == "1")
